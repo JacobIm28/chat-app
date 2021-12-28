@@ -37,7 +37,7 @@ io.on('connection', (socket) => {
     socket.join(user.room)
 
     socket.emit('message', utils.genMessage('Admin', 'Welcome!'))
-    socket.broadcast.to(user.room).emit('message', utils.genMessage(`${user.username} has joined`))
+    socket.broadcast.to(user.room).emit('message', utils.genMessage('Admin', `${user.username} has joined`))
     io.to(user.room).emit('roomData', {
       room: user.room, 
       users: userUtils.getUsersInRoom(user.room)
